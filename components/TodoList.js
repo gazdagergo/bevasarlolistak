@@ -23,7 +23,10 @@ export default function Todos({ user }) {
         .insert({ task, user_id: user.id })
         .single()
       if (error) setError(error.message)
-      else setTodos([...todos, todo])
+      else {
+        setTodos([...todos, todo])
+        setNewTaskText('')
+      }
     }
   }
 
@@ -38,12 +41,12 @@ export default function Todos({ user }) {
 
   return (
     <div className="w-full">
-      <h1 className="mb-12">Todo List.</h1>
+      <h1 className="mb-12">Bevásárlólista</h1>
       <div className="flex gap-2 my-2">
         <input
           className="rounded w-full p-2"
           type="text"
-          placeholder="make coffee"
+          placeholder="mit kell venni?"
           value={newTaskText}
           onChange={(e) => {
             setError('')
@@ -51,7 +54,7 @@ export default function Todos({ user }) {
           }}
         />
         <button className="btn-black" onClick={() => addTodo(newTaskText)}>
-          Add
+          Hozzáad
         </button>
       </div>
       {!!errorText && <Alert text={errorText} />}

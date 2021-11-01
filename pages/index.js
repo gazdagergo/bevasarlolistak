@@ -11,7 +11,7 @@ export default function IndexPage() {
         <div className="w-full h-full flex justify-center items-center p-4">
           <Auth
             supabaseClient={supabase}
-            providers={['google', 'github']}
+            // providers={['google', 'github', 'facebook']}
             socialLayout="horizontal"
             socialButtonSize="xlarge"
           />
@@ -29,7 +29,7 @@ export default function IndexPage() {
               if (error) console.log('Error logging out:', error.message)
             }}
           >
-            Logout
+            Kilép
           </button>
         </div>
       )}
